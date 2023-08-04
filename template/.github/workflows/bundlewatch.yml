@@ -1,0 +1,46 @@
+name: Bundlewatch
+
+on:
+  pull_request: null
+  push:
+    branches:
+      - main
+      - dev
+
+env:
+  FORCE_COLOR: 2
+  NODE: 18
+
+jobs:
+  bundlewatch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "${{ env.NODE }}"
+     
+      - name: Install PNPM
+        run: npm i -g pnpm
+
+      - name: Set up Bundler
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.6
+          bundler-cache: true
+
+      - name: Install pnpm dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Run build
+        run: pnpm run build
+
+      - name: Run bundlewatch
+        run: pnpm run bundlewatch
+        env:
+          BUNDLEWATCH_GITHUB_TOKEN: "${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}"
+          CI_BRANCH_BASE: dev
