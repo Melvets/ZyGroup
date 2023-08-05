@@ -74,7 +74,7 @@ function upload(){
         return false;
     }
 
-    $namaFileBaru = $namaFileBaru;
+    $namaFileBaru = $namaFileDepan;
     $namaFileBaru .= uniqid();
     $namaFileBaru .= '.';
     $namaFileBaru .= $ekstensiGambar;

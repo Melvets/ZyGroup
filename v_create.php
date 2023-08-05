@@ -1,6 +1,22 @@
 <?php 
 include 'functions.php';
-$datamember = query("SELECT * FROM tbl_member");
+
+if ( isset($_POST["submit"]) ) {
+	if(create($_POST) > 0 ) {
+		echo "    
+            <script>
+                alert('data berhasil ditambahkan!');
+                document.location.href = 'index.php';
+            </script> ";
+	} else {
+		echo "
+            <script>
+                alert('data gagal ditambahkan!');
+                document.location.href = 'index.php';
+            </script> ";
+	}
+}
+
 ?>
 
 
@@ -199,24 +215,8 @@ $datamember = query("SELECT * FROM tbl_member");
                   Zy Members
                 </div>
                 <h2 class="page-title">
-                  Daftar Member ZyGroup
+                  Tambah Data Member ZyGroup
                 </h2>
-              </div>
-              <!-- Page title actions -->
-              <div class="col-auto ms-auto d-print-none">
-                <div class="btn-list">
-                  <a href="v_create.php" class="btn btn-primary d-none d-sm-inline-block" >
-                    <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-					<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-					<path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
-					<path d="M16 19h6"></path>
-					<path d="M19 16v6"></path>
-					<path d="M6 21v-2a4 4 0 0 1 4 -4h4"></path>
-					</svg>
-                    Create new member
-                  </a>
-                </div>
               </div>
             </div>
           </div>
@@ -231,84 +231,116 @@ $datamember = query("SELECT * FROM tbl_member");
 
               <div class="col-12">
                 <div class="card">
-                  <div class="card-body border-bottom py-3">
-                    <div class="d-flex">
-                      <div class="text-secondary">
-                        Show
-                        <div class="mx-2 d-inline-block">
-                          <input type="text" class="form-control form-control-sm" value="8" size="3" aria-label="Invoices count">
-                        </div>
-                        entries
-                      </div>
-                      <div class="ms-auto text-secondary">
-                        Search:
-                        <div class="ms-2 d-inline-block">
-                          <input type="text" class="form-control form-control-sm" aria-label="Search invoice">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+					<div class="card-header">
+						<h3 class="card-title">New Member</h3>
+					</div>
 
-                  <div class="table-responsive">
-                    <table class="table card-table table-vcenter text-nowrap datatable">
-                      <thead>
-                        <tr>
-                          <th class="w-1">No.</th>
-                          <th>Gambar</th>
-                          <th>Nama</th>
-                          <th>Jenis Kelamin</th>
-                          <th>Kota</th>
-                          <th>Tanggal Lahir</th>
-                          <th>No Telepon</th>
-                          <th>Jabatan</th>
-                          <th>Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
+	  				<form action="" method="post" enctype="multipart/form-data">
 
-                      <?php $i = 1; ?>
-                      <?php foreach($datamember as $member) : ?>
-                        <tr>
-                          <td><span class="text-secondary"><?= $i; ?></span></td>
-                          <td><img src="dist/img/upload/<?php echo $member["gambar"]; ?>" alt="" width="50"></td>
-                          <td><?= $member["nama"]; ?></td>
-                          <td><?= $member["jenis_kelamin"]; ?></td>
-                          <td><?= $member["kota"]; ?></td>
-                          <td><?= $member["tanggal_lahir"]; ?></td>
-                          <td><?= $member["telp"]; ?></td>
-                          <td><?= $member["jabatan"]; ?></td>
-                          <td><a href="">Hapus</a> | <a href="">Edit</a></td>
-                        </tr>
-                      <?php $i++; ?>
-                      <?php endforeach; ?>
+					<div class="p-5 pt-3 pb-3">
+						<div class="modal-body">
+						<div class="mb-3">
+							
+						<!-- Nama -->
+						<label for="nama" class="form-label">Name</label>
+						<input id="nama" type="text" class="form-control " placeholder="Your name" name="nama" required>
+
+						</div>
+					
+						<div class="row">
+						<div class="col-lg-6">
+							<div class="mb-3">
+							
+							<!-- No Telepon -->
+							<label for="telp" class="form-label">No Telepon</label>
+							<input id="telp" type="text" class="form-control" placeholder="Isi nomor telepon" name="telp" required>
+
+							</div>
+						</div>
+
+						<div class="col-lg-6">
+							<div class="mb-3">
+							
+							<!-- Jenis Kelamin -->
+							<label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
+							<input id="jenis_kelamin" type="text" class="form-control" placeholder="Jenis kelamin" name="jenis_kelamin" required>
+
+							<!-- <select class="form-select">
+								<option value="1" selected>Private</option>
+								<option value="2">Public</option>
+								<option value="3">Hidden</option>
+							</select> -->
+							</div>
+						</div>
+						</div>
+
+						<div class="row">
+						<div class="col-lg-6">
+							<div class="mb-3">
+							
+							<!-- Kota -->
+							<label for="kota" class="form-label">Kota</label>
+							<input id="kota" type="text" class="form-control" placeholder="Masukkan kota" name="kota" required>
+
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="mb-3">
+
+							<!-- Tanggal Lahir -->
+							<label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
+							<input id="tanggal_lahir" type="date" class="form-control" name="tanggal_lahir" required>
+
+							</div>
+						</div>
+						</div>
+
+						<div class="row">
+							<div class="col-lg-8">
+								<div class="mb-3">
+
+								<!-- Gambar -->
+								<label for="gambar" class="form-label">Gambar</label>
+								<input id="gambar" type="file" class="form-control" name="gambar" required>
+								
+								</div>
+							</div>
+							<div class="col-lg-4">
+								<div class="mb-3">
+
+								<!-- Jabatan -->
+								<label for="jabatan" class="form-label">Jabatan</label>
+								<input id="jabatan" type="text" class="form-control" name="jabatan" required>
+
+								</div>
+							</div>
+						</div>
 
 
-                      </tbody>
-                    </table>
-                  </div>
-                  <div class="card-footer d-flex align-items-center">
-                    <p class="m-0 text-secondary">Showing <span>1</span> to <span>8</span> of <span>16</span> entries</p>
-                    <ul class="pagination m-0 ms-auto">
-                      <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                          <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
-                          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l-6 6l6 6" /></svg>
-                          prev
-                        </a>
-                      </li>
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item"><a class="page-link" href="#">4</a></li>
-                      <li class="page-item"><a class="page-link" href="#">5</a></li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">
-                          next <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
-                          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
+						<div class="modal-footer">
+
+							<a href="index.php" class="btn btn-link link-secondary text-decoration-none mx-3">
+							Cancel
+							</a>
+
+							<button type="submit" name="submit" class="btn btn-primary">
+							<!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+							<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+							<path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
+							<path d="M16 19h6"></path>
+							<path d="M19 16v6"></path>
+							<path d="M6 21v-2a4 4 0 0 1 4 -4h4"></path>
+							</svg>
+							Create new member
+							</button>
+
+						</div>
+					</div>
+
+					</form>
+
+					</div>
                 </div>
               </div>
             </div>
@@ -364,6 +396,5 @@ $datamember = query("SELECT * FROM tbl_member");
     <!-- Tabler Core -->
     <script src="./dist/js/tabler.min.js?1685973381" defer></script>
     <script src="./dist/js/demo.min.js?1685973381" defer></script>
-    
   </body>
 </html>
