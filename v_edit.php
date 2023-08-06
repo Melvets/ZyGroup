@@ -315,7 +315,7 @@ if ( isset($_POST["submit"]) ) {
 
 						<div class="row">
               <div class="col-1">
-              <img src="dist/img/upload/<?php echo $datamember["gambar"]; ?>" width="100" class="img-fluid img-thumbnail">
+                <img src="dist/img/upload/<?php echo $datamember["gambar"]; ?>" width="100" class="img-fluid img-thumbnail">
               </div>
 							<div class="col-lg-7">
 								<div class="mb-3">

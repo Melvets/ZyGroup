@@ -281,7 +281,6 @@ $datamember = query("SELECT * FROM tbl_member");
                           <td><img src="dist/img/upload/<?php echo $member["gambar"]; ?>" alt="" width="60" class="img-fluid img-thumbnail"></td>
                           <td><?= $member["nama"]; ?></td>
                           <td><?= $member["jenis_kelamin"]; ?></td>
-                          <td><?= $member["kota"]; ?></td>
                           <td><?= $member["tanggal_lahir"]; ?></td>
                           <td><?= $member["telp"]; ?></td>
                           <td><?= $member["jabatan"]; ?></td>
