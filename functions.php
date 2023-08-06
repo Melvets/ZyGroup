@@ -85,5 +85,44 @@ function upload(){
 
 }
 
+function delete($id) {
+    global $db;
+    mysqli_query($db, "DELETE FROM tbl_member WHERE id = $id");
+
+    return mysqli_affected_rows($db);
+}
+
+function edit($data) {
+    global $db;
+
+    $id = $data["id"];
+    $nama = htmlspecialchars($data["nama"]);
+    $jenis_kelamin = htmlspecialchars($data["jenis_kelamin"]);
+    $kota = htmlspecialchars($data["kota"]);
+    $tanggal_lahir = htmlspecialchars($data["tanggal_lahir"]);
+    $telp = htmlspecialchars($data["telp"]);
+    $jabatan = htmlspecialchars($data["jabatan"]);
+    $gambarLama = $data["gambarLama"];
+
+    if ( $_FILES['gambar']['error'] === 4 ) {
+        $gambar = $gambarLama;
+    } else {
+        $gambar = upload();
+    }
+
+    $query = "UPDATE tbl_member SET
+                nama = '$nama',
+                jenis_kelamin = '$jenis_kelamin',
+                kota = '$kota',
+                tanggal_lahir = '$tanggal_lahir',
+                telp = '$telp',
+                jabatan = '$jabatan',
+                gambar = '$gambar' 
+            WHERE id = $id";
+
+    mysqli_query($db, $query);
+    return mysqli_affected_rows($db);
+}
+
 
 ?>

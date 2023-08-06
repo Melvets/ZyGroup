@@ -18,7 +18,7 @@ $datamember = query("SELECT * FROM tbl_member");
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Zy Website</title>
+    <title>ZyGroup</title>
     <script defer data-api="/stats/api/event" data-domain="preview.tabler.io" src="/stats/js/script.js"></script>
     <meta name="msapplication-TileColor" content=""/>
     <meta name="theme-color" content=""/>
@@ -62,10 +62,17 @@ $datamember = query("SELECT * FROM tbl_member");
   </head>
   <body >
     <script src="./dist/js/demo-theme.min.js?1685973381"></script>
-    
+
     <div class="page">
       <!-- Navbar -->
       <header class="navbar navbar-expand-md navbar-overlap d-print-none"  data-bs-theme="dark">
+
+      <!-- Alert -->
+      <!-- <div class="alert alert-warning alert-important alert-dismissible fade show position-absolute w-50 p-3" role="alert">
+        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div> -->
+
         <div class="container-xl">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -208,12 +215,12 @@ $datamember = query("SELECT * FROM tbl_member");
                   <a href="v_create.php" class="btn btn-primary d-none d-sm-inline-block" >
                     <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-					<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-					<path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
-					<path d="M16 19h6"></path>
-					<path d="M19 16v6"></path>
-					<path d="M6 21v-2a4 4 0 0 1 4 -4h4"></path>
-					</svg>
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
+                    <path d="M16 19h6"></path>
+                    <path d="M19 16v6"></path>
+                    <path d="M6 21v-2a4 4 0 0 1 4 -4h4"></path>
+                    </svg>
                     Create new member
                   </a>
                 </div>
@@ -231,6 +238,7 @@ $datamember = query("SELECT * FROM tbl_member");
 
               <div class="col-12">
                 <div class="card">
+
                   <div class="card-body border-bottom py-3">
                     <div class="d-flex">
                       <div class="text-secondary">
@@ -270,14 +278,17 @@ $datamember = query("SELECT * FROM tbl_member");
                       <?php foreach($datamember as $member) : ?>
                         <tr>
                           <td><span class="text-secondary"><?= $i; ?></span></td>
-                          <td><img src="dist/img/upload/<?php echo $member["gambar"]; ?>" alt="" width="50"></td>
+                          <td><img src="dist/img/upload/<?php echo $member["gambar"]; ?>" alt="" width="60" class="img-fluid img-thumbnail"></td>
                           <td><?= $member["nama"]; ?></td>
                           <td><?= $member["jenis_kelamin"]; ?></td>
                           <td><?= $member["kota"]; ?></td>
                           <td><?= $member["tanggal_lahir"]; ?></td>
                           <td><?= $member["telp"]; ?></td>
                           <td><?= $member["jabatan"]; ?></td>
-                          <td><a href="">Hapus</a> | <a href="">Edit</a></td>
+                          <td>
+                            <a href="v_edit.php?id=<?= $member["id"] ?>" class="btn btn-default text-green btn-lg shadow rounded-2 p-2" title="update"><i class="fas fa-pen"></i></a>
+                            <a href="v_delete.php?id=<?= $member["id"]; ?>" onclick="return confirm('Are you sure?');" class="btn btn-default text-red btn-lg shadow rounded-2 p-2" title="delete"><i class="fas fa-trash"></i></a>
+                          </td>
                         </tr>
                       <?php $i++; ?>
                       <?php endforeach; ?>
@@ -364,6 +375,7 @@ $datamember = query("SELECT * FROM tbl_member");
     <!-- Tabler Core -->
     <script src="./dist/js/tabler.min.js?1685973381" defer></script>
     <script src="./dist/js/demo.min.js?1685973381" defer></script>
-    
+    <!-- Icons -->
+    <script src="https://kit.fontawesome.com/9c45ff2d1a.js" crossorigin="anonymous"></script>
   </body>
 </html>
