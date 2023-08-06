@@ -1,16 +1,21 @@
 <?php 
 include 'functions.php';
 
+$id = $_GET["id"];
+$datamember = query("SELECT * FROM tbl_member WHERE id = $id")[0];
+
 if ( isset($_POST["submit"]) ) {
-	if(create($_POST) > 0 ) {
+	if ( edit($_POST) > 0 ) {
 		echo "
             <script>
+                alert('data berhasil diubah');
                 document.location.href = 'index.php';
             </script> ";
 	
 	} else {
 		echo "
             <script>
+              alert('data gagal diubah');
                 document.location.href = 'index.php';
             </script> ";
 	}
@@ -234,15 +239,19 @@ if ( isset($_POST["submit"]) ) {
 						<h3 class="card-title">New Member</h3>
 					</div>
 
-	  				<form action="" method="post" enctype="multipart/form-data">
+	  			<form action="" method="post" enctype="multipart/form-data">
 
 					<div class="p-5 pt-3 pb-3">
 						<div class="modal-body">
 						<div class="mb-3">
-							
+						
+            <input type="hidden" name="id" value="<?= $datamember["id"]; ?>">
+            <input type="hidden" name="gambarLama" value="<?= $datamember["gambar"]; ?>">
+
 						<!-- Nama -->
 						<label for="nama" class="form-label">Name</label>
-						<input id="nama" type="text" class="form-control " placeholder="Your name" name="nama" required>
+						<input id="nama" type="text" class="form-control " placeholder="Your name" name="nama" required
+            value="<?= $datamember["nama"]; ?>">
 
 						</div>
 					
@@ -252,7 +261,8 @@ if ( isset($_POST["submit"]) ) {
 							
 							<!-- No Telepon -->
 							<label for="telp" class="form-label">No Telepon</label>
-							<input id="telp" type="text" class="form-control" placeholder="Isi nomor telepon" name="telp" required>
+							<input id="telp" type="text" class="form-control" placeholder="Isi nomor telepon" name="telp" required
+              value="<?= $datamember["telp"]; ?>">
 
 							</div>
 						</div>
@@ -264,12 +274,14 @@ if ( isset($_POST["submit"]) ) {
               <div class="form-label pb-2">Jenis Kelamin</div>
               <div>
                 <label class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="jenis_kelamin" value="Laki-Laki">
+                  <input class="form-check-input" type="radio" name="jenis_kelamin" value="Laki-Laki" 
+                  <?php if ($datamember["jenis_kelamin"] == 'Laki-Laki' ) { echo 'checked'; } ?> >
                   <span class="form-check-label">Laki-Laki</span>
                 </label>
 
                 <label class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="jenis_kelamin" value="Perempuan">
+                  <input class="form-check-input" type="radio" name="jenis_kelamin" value="Perempuan"
+                  <?php if ($datamember["jenis_kelamin"] == 'Perempuan' ) { echo 'checked'; } ?> >
                   <span class="form-check-label">Perempuan</span>
                 </label>
               </div>              
@@ -284,7 +296,8 @@ if ( isset($_POST["submit"]) ) {
 							
 							<!-- Kota -->
 							<label for="kota" class="form-label">Kota</label>
-							<input id="kota" type="text" class="form-control" placeholder="Masukkan kota" name="kota" required>
+							<input id="kota" type="text" class="form-control" placeholder="Masukkan kota" name="kota" required
+              value="<?= $datamember["kota"]; ?>" >
 
 							</div>
 						</div>
@@ -293,19 +306,23 @@ if ( isset($_POST["submit"]) ) {
 
 							<!-- Tanggal Lahir -->
 							<label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
-							<input id="tanggal_lahir" type="date" class="form-control" name="tanggal_lahir" required>
+							<input id="tanggal_lahir" type="date" class="form-control" name="tanggal_lahir" required
+              value="<?= $datamember["tanggal_lahir"]; ?>" >
 
 							</div>
 						</div>
 						</div>
 
 						<div class="row">
-							<div class="col-lg-8">
+              <div class="col-1">
+              <img src="dist/img/upload/<?php echo $datamember["gambar"]; ?>" width="100" class="img-fluid img-thumbnail">
+              </div>
+							<div class="col-lg-7">
 								<div class="mb-3">
 
 								<!-- Gambar -->
 								<label for="gambar" class="form-label">Gambar</label>
-								<input id="gambar" type="file" class="form-control" name="gambar" required>
+								<input id="gambar" type="file" class="form-control" name="gambar">
 								
 								</div>
 							</div>
@@ -314,7 +331,8 @@ if ( isset($_POST["submit"]) ) {
 
 								<!-- Jabatan -->
 								<label for="jabatan" class="form-label">Jabatan</label>
-								<input id="jabatan" type="text" class="form-control" name="jabatan" required>
+								<input id="jabatan" type="text" class="form-control" name="jabatan" required
+                value="<?= $datamember["jabatan"]; ?>" >
 
 								</div>
 							</div>
