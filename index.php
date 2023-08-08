@@ -251,13 +251,19 @@ $datamember = query("SELECT * FROM tbl_member");
                       <div class="ms-auto text-secondary">
                         Search:
                         <div class="ms-2 d-inline-block">
-                          <input type="text" class="form-control form-control-sm" aria-label="Search invoice">
+
+                          <form action="" method="post">
+
+                          <input type="text" name="keyword" class="form-control form-control-sm" aria-label="Search invoice" autocomplete="off" autofocus id="keyword">
+
+                          </form>
+                        
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <div class="table-responsive">
+                  <div class="table-responsive" id="container">
                     <table class="table card-table table-vcenter text-nowrap datatable">
                       <thead>
                         <tr>
@@ -281,6 +287,7 @@ $datamember = query("SELECT * FROM tbl_member");
                           <td><img src="dist/img/upload/<?php echo $member["gambar"]; ?>" alt="" width="60" class="img-fluid img-thumbnail"></td>
                           <td><?= $member["nama"]; ?></td>
                           <td><?= $member["jenis_kelamin"]; ?></td>
+                          <td><?= $member["kota"]; ?></td>
                           <td><?= $member["tanggal_lahir"]; ?></td>
                           <td><?= $member["telp"]; ?></td>
                           <td><?= $member["jabatan"]; ?></td>
@@ -376,5 +383,8 @@ $datamember = query("SELECT * FROM tbl_member");
     <script src="./dist/js/demo.min.js?1685973381" defer></script>
     <!-- Icons -->
     <script src="https://kit.fontawesome.com/9c45ff2d1a.js" crossorigin="anonymous"></script>
+
+    <script src="js/code.jquery.com_jquery-3.7.0.min.js"></script>
+    <script src="js/script.js"></script>
   </body>
 </html>
