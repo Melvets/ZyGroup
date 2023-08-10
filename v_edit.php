@@ -219,7 +219,7 @@ if ( isset($_POST["submit"]) ) {
                   Zy Members
                 </div>
                 <h2 class="page-title">
-                  Tambah Data Member ZyGroup
+                  Edit Data Member ZyGroup
                 </h2>
               </div>
             </div>
@@ -236,7 +236,7 @@ if ( isset($_POST["submit"]) ) {
               <div class="col-12">
                 <div class="card">
 					<div class="card-header">
-						<h3 class="card-title">New Member</h3>
+						<h3 class="card-title">Edit Member</h3>
 					</div>
 
 	  			<form action="" method="post" enctype="multipart/form-data">
@@ -354,7 +354,7 @@ if ( isset($_POST["submit"]) ) {
 							<path d="M19 16v6"></path>
 							<path d="M6 21v-2a4 4 0 0 1 4 -4h4"></path>
 							</svg>
-							Create new member
+							Edit member
 							</button>
 
 						</div>

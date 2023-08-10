@@ -37,7 +37,7 @@ CREATE TABLE `tbl_member` (
   `telp` bigint NOT NULL,
   `jabatan` varchar(255) NOT NULL,
   `date_create` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tbl_member`
