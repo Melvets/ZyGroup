@@ -124,5 +124,42 @@ function edit($data) {
     return mysqli_affected_rows($db);
 }
 
+function register($data) {
+    global $db;
+
+    $firstName = $data["first_name"];
+    $lastName = $data["last_name"];
+    $username = strtolower(stripcslashes($data["username"]));
+    $email = $data["email"];
+    $password = mysqli_real_escape_string($db, $data["password"]);
+    $password2 = mysqli_real_escape_string($db, $data["password2"]);
+
+    $result = mysqli_query($db, "SELECT username FROM tbl_user WHERE username = '$username' ");
+    if ( mysqli_fetch_assoc($result) ) {
+        echo "
+            <script>
+                alert('username sudah terdaftar!');
+            </script>
+        ";
+        return false;
+    }
+
+    if ( $password !== $password2 ) {
+        echo "
+            <script>
+                alert('konfirmasi password tidak sesuai!');
+            </script>
+        ";
+        return false;
+    } 
+
+    $password = password_hash($password, PASSWORD_DEFAULT);
+
+    mysqli_query($db, "INSERT INTO tbl_user ( first_name, last_name, username, email, password ) VALUES ( '$firstName', '$lastName', '$username', '$email', '$password' )");
+
+    return mysqli_affected_rows($db);
+
+}
+
 
 ?>
