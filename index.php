@@ -53,9 +53,9 @@ $datamember = query("SELECT * FROM tbl_member");
 
   <!-- Jquery Fancybox -->
     <script type="text/javascript" src="fancybox/lib/jquery-1.10.1.min.js"></script>
-    <script type="text/javascript" src="fancybox/source/jquery.fancybox.js?v=2.1.5"></script>
+    <script type="text/javascript" src="fancybox/source/jquery.fancybox.js"></script>
   <!-- CSS jQuery -->
-    <link rel="stylesheet" type="text/css" href="fancybox/source/jquery.fancybox.css?v=2.1.5" media="screen">
+    <link rel="stylesheet" type="text/css" href="fancybox/source/jquery.fancybox.css" media="screen">
 
     <style>
       @import url('https://rsms.me/inter/inter.css');
@@ -291,7 +291,7 @@ $datamember = query("SELECT * FROM tbl_member");
                       <?php foreach($datamember as $member) : ?>
                         <tr>
                           <td><span class="text-secondary"><?= $i; ?></span></td>
-                          <td><a href="<?php echo $member["gambar"]; ?>" id="picture"><img src="dist/img/upload/<?php echo $member["gambar"]; ?>" alt="" width="60" class="img-fluid img-thumbnail"></a></td>
+                          <td><a href="dist/img/upload/<?php echo $member["gambar"];?>" class="picture"><img src="dist/img/upload/<?php echo $member["gambar"]; ?>" alt="" width="60" class="img-fluid img-thumbnail"></a></td>
                           <td><?= $member["nama"]; ?></td>
                           <td><?= $member["jenis_kelamin"]; ?></td>
                           <td><?= $member["kota"]; ?></td>
