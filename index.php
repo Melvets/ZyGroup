@@ -1,4 +1,11 @@
 <?php 
+session_start();
+
+if ( !isset($_SESSION["login"]) ) {
+  header("Location: login.php");
+  exit;
+}
+
 include 'functions.php';
 $datamember = query("SELECT * FROM tbl_member");
 ?>
@@ -121,8 +128,8 @@ $datamember = query("SELECT * FROM tbl_member");
                   <p class="text-center pt-4"> Dhiya <br> <small>Tim IT</small> </p>
                   <div class="dropdown-divider m-3"></div>
                   <div class="d-flex">
-                    <a href="./settings.html" class="text-reset text-decoration-none px-5 pb-3 bd-highlight">Settings</a> |
-                    <a href="./sign-in.html" class="text-reset text-decoration-none px-5 pb-3 bd-highlight ">Logout</a>
+                    <a href="#" class="text-reset px-5 pb-3 bd-highlight">Settings</a> |
+                    <a href="logout.php" class="text-reset px-5 pb-3 bd-highlight ">Logout</a>
                   </div>
                   </div>
               </div>

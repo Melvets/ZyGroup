@@ -1,4 +1,11 @@
 <?php 
+session_start();
+
+if ( !isset($_SESSION["login"]) ) {
+  header("Location: login.php");
+  exit;
+}
+
 include 'functions.php';
 
 $id = $_GET["id"];
@@ -127,8 +134,8 @@ if ( isset($_POST["submit"]) ) {
                   <p class="text-center pt-4"> Dhiya <br> <small>Tim IT</small> </p>
                   <div class="dropdown-divider m-3"></div>
                   <div class="d-flex">
-                    <a href="./settings.html" class="text-reset text-decoration-none px-5 pb-3 bd-highlight">Settings</a> |
-                    <a href="./sign-in.html" class="text-reset text-decoration-none px-5 pb-3 bd-highlight ">Logout</a>
+                    <a href="#" class="text-reset px-5 pb-3 bd-highlight">Settings</a> |
+                    <a href="logout.php" class="text-reset px-5 pb-3 bd-highlight ">Logout</a>
                   </div>
                   </div>
               </div>
@@ -354,7 +361,7 @@ if ( isset($_POST["submit"]) ) {
 							<path d="M19 16v6"></path>
 							<path d="M6 21v-2a4 4 0 0 1 4 -4h4"></path>
 							</svg>
-							Edit member
+							Save
 							</button>
 
 						</div>
