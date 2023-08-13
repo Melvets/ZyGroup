@@ -1,3 +1,25 @@
+<?php 
+include 'functions.php';
+
+if ( isset($_POST["login"]) ) {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
+    $result = mysqli_query($db, "SELECT * FROM tbl_user WHERE username = '$username' ");
+
+    if ( mysqli_num_rows($result) === 1 ) {
+        $row = mysqli_fetch_assoc($result);
+
+        if ( password_verify($password, $row["password"]) ) {
+            header("Location: index.php");
+        }
+    }
+
+    $error = true;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,23 +52,33 @@
         </div>
 
         <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 px-5 rounded-3 my-5">
-            <form>
+            
+        <form action="" method="post">
+
             <div class="align-items-center mb-4">
                 <h2 class="mb-0 page-title text-white">Login</h2>
             </div>
+            
+            <?php if ( isset($error) ) : ?>
+            <div class="mb-3">
+                <p class="text-danger">Upss... Username atau password salah!</p>
+            </div>
+            <?php endif; ?>
 
             <!-- Username input -->
             <div class="form-outline mb-3">
-                <label class="form-label fw-bold text-white" for="username">Username</label>
-                <input type="email" id="username" class="form-control form-control-lg fs-6"
-                placeholder="Enter username" require/>
+                <label for="username" class="form-label fw-bold text-white">Username</label>
+                <input id="username" name="username" type="text" 
+                class="form-control form-control-lg fs-6"
+                placeholder="Enter username" required/>
             </div>
 
             <!-- Password input -->
             <div class="form-outline mb-2">
-                <label class="form-label fw-bold text-white" for="password">Password</label>
-                <input type="password" id="password" class="form-control form-control-lg fs-6"
-                placeholder="Enter password" require/>
+                <label for="password" class="form-label fw-bold text-white">Password</label>
+                <input id="password" name="password" type="password" 
+                class="form-control form-control-lg fs-6"
+                placeholder="Enter password" required/>
             </div>
 
                 <!-- Checkbox -->
@@ -57,14 +89,17 @@
                 </label>
             </div>
 
+
+
             <div class="text-center text-lg-start mt-2 pt-2">
-                <button type="button" class="btn btn-primary btn-lg"
+                <button type="submit" name="login" class="btn btn-primary btn-lg"
                 style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
                 <p class="small fw-bold mt-2 pt-1 mb-0 text-white">Don't have an account? <a href="register.php"
                     class="link-danger">Register</a></p>
             </div>
 
-            </form>
+        </form>
+
         </div>
         </div>
     </div>
