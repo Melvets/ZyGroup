@@ -1,12 +1,24 @@
 <?php 
 session_start();
+include 'functions.php';
+
+if ( isset($_COOKIE['auth']) && isset($_COOKIE['key']) ) {
+    $auth = $_COOKIE['auth'];
+    $key = $_COOKIE['key'];
+
+    $result = mysqli_query($db, "SELECT id_user, username FROM tbl_user");
+    $row = mysqli_fetch_assoc($result);
+
+    if ( $auth === hash('sha256', $row['id_user']) && $key === hash('sha256', $row['username']) ) {
+        $_SESSION['login'] = true;
+    }
+}
 
 if ( isset($_SESSION["login"]) ) {
     header("Location: index.php");
     exit;
 }
 
-include 'functions.php';
 
 if ( isset($_POST["login"]) ) {
     $username = $_POST["username"];
@@ -19,6 +31,12 @@ if ( isset($_POST["login"]) ) {
 
         if ( password_verify($password, $row["password"]) ) {
             $_SESSION["login"] = true;
+
+            if ( isset($_POST["remember"]) ) {
+                setcookie('auth', hash('sha256', $row['id_user']), time()+60 * 60 * 24);
+                setcookie('key', hash('sha256', $row['username']), time()+60 * 60 * 24);
+            }
+
             header("Location: index.php");
         }
     }
@@ -91,8 +109,8 @@ if ( isset($_POST["login"]) ) {
 
                 <!-- Checkbox -->
             <div class="form-check mb-0">
-                <input class="form-check-input me-2" type="checkbox" value="" id="remember-me" />
-                <label class="form-check-label text-white" for="remember-me">
+                <input id="remember-me" name="remember" class="form-check-input me-2" type="checkbox" value="" />
+                <label for="remember-me" class="form-check-label text-white">
                     Remember me
                 </label>
             </div>
