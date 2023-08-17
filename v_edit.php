@@ -13,18 +13,12 @@ $datamember = query("SELECT * FROM tbl_member WHERE id = $id")[0];
 
 if ( isset($_POST["submit"]) ) {
 	if ( edit($_POST) > 0 ) {
-		echo "
-            <script>
-                alert('data berhasil diubah');
-                document.location.href = 'index.php';
-            </script> ";
+    $_SESSION["alertSuccess"] = "Data berhasil diubah";
+		header("location: index.php");
 	
 	} else {
-		echo "
-            <script>
-              alert('data gagal diubah');
-                document.location.href = 'index.php';
-            </script> ";
+    $_SESSION["alertError"] = "Data gagal diubah";
+		header("location: index.php");
 	}
 }
 
@@ -330,7 +324,11 @@ if ( isset($_POST["submit"]) ) {
 								<!-- Gambar -->
 								<label for="gambar" class="form-label">Gambar</label>
 								<input id="gambar" type="file" class="form-control" name="gambar">
-								
+
+                <?php if ( isset($_SESSION["alertInvalid"]) ) : ?>
+                  <div class="text-warning">Pilih gambar terlebih dahulu!</div>
+                <?php endif; ?>
+
 								</div>
 							</div>
 							<div class="col-lg-4">

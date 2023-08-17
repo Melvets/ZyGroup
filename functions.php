@@ -37,6 +37,7 @@ function upload(){
     $ukuranFile = $_FILES['gambar']['size'];
     $error = $_FILES['gambar']['error'];
     $tmpName = $_FILES['gambar']['tmp_name'];
+    $gambar_error = null;
 
     if ( $error === 4 ) {
         echo "
@@ -44,6 +45,8 @@ function upload(){
                 alert ('pilih gambar terlebih dahulu!');
             </script>
         ";
+
+        // $gambar_error = "Harap pilih gambar terlebih dahulu!";
 
         return false;
     }

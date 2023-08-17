@@ -59,10 +59,13 @@ $datamember = query("SELECT * FROM tbl_member");
     <link href="./dist/css/demo.min.css?1685973381" rel="stylesheet"/>
 
   <!-- Jquery Fancybox -->
-    <script type="text/javascript" src="fancybox/lib/jquery-1.10.1.min.js"></script>
-    <script type="text/javascript" src="fancybox/source/jquery.fancybox.js"></script>
+    <!-- <script type="text/javascript" src="fancybox/lib/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="fancybox/source/jquery.fancybox.js"></script> -->
   <!-- CSS jQuery -->
     <link rel="stylesheet" type="text/css" href="fancybox/source/jquery.fancybox.css" media="screen">
+
+  <!-- Toastr -->
+    <link href="toastr/toastr.css" rel="stylesheet"/>
 
     <style>
       @import url('https://rsms.me/inter/inter.css');
@@ -400,5 +403,53 @@ $datamember = query("SELECT * FROM tbl_member");
 
     <script src="js/code.jquery.com_jquery-3.7.0.min.js"></script>
     <script src="js/script.js"></script>
+
+    <!-- Toastr -->
+    <script src="toastr/toastr.min.js"></script>
+
+    <?php if ( isset($_SESSION["alertSuccess"]) ) : ?>
+      <script>
+        toastr.options = {
+          "closeButton": true,
+          "debug": true,
+          "newestOnTop": true,
+          "progressBar": false,
+          "positionClass": "toast-top-right",
+          "preventDuplicates": false,
+          "showDuration": "300",
+          "hideDuration": "1000",
+          "timeOut": "5000",
+          "extendedTimeOut": "1000",
+          "showEasing": "swing",
+          "hideEasing": "linear",
+          "showMethod": "fadeIn",
+          "hideMethod": "fadeOut"
+        }
+        toastr.success('<?= $_SESSION["alertSuccess"]; ?>');
+      </script>
+    <?php session_destroy(); endif; ?>
+
+    <?php if ( isset($_SESSION["alertError"]) ) : ?>
+      <script>
+        toastr.options = {
+          "closeButton": true,
+          "debug": true,
+          "newestOnTop": true,
+          "progressBar": false,
+          "positionClass": "toast-top-right",
+          "preventDuplicates": false,
+          "showDuration": "300",
+          "hideDuration": "1000",
+          "timeOut": "5000",
+          "extendedTimeOut": "1000",
+          "showEasing": "swing",
+          "hideEasing": "linear",
+          "showMethod": "fadeIn",
+          "hideMethod": "fadeOut"
+        }
+        toastr.error('<?= $_SESSION["alertError"]; ?>');
+      </script>
+    <?php session_destroy(); endif; ?>
+
   </body>
 </html>
