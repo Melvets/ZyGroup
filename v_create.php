@@ -10,24 +10,14 @@ include 'functions.php';
 
 if ( isset($_POST["submit"]) ) {
 	if(create($_POST) > 0 ) {
-    $_SESSION["alert"] = "Data berhasil ditambahkan";
+    $_SESSION["alertSuccess"] = "Data berhasil ditambahkan!";
 		header("location: index.php");
-	
 	} else {
-		echo "
-            <script>
-                document.location.href = 'index.php';
-            </script> ";
+    $_SESSION["alertError"] = "Data gagal ditambahkan!";
+		header("location: index.php");
 	}
 }
 ?>
-
- <!-- ========================================================= -->
-<!-- <?php
- if($gambar_error != null){
-  ?> <style>.gambar_error{display:block}</style> <?php
-}
-?> -->
 
 
 <!doctype html>
@@ -316,10 +306,12 @@ if ( isset($_POST["submit"]) ) {
 
 								<!-- Gambar -->
 								<label for="gambar" class="form-label">Gambar</label>
-								<input id="gambar" type="file" class="form-control" name="gambar">
+								<input id="gambar" type="file" class="form-control" name="gambar" required>
 
-                <!-- <div class="gambar_error text-warning"><?php echo $gambar_error; ?></div> -->
-								
+                <?php if ( isset($_SESSION["messageError"]) ) : ?>
+                  <div class="gambar_error text-warning"><?= $_SESSION["messageError"]; ?></div>
+                <?php session_destroy(); endif; ?>							
+
 								</div>
 							</div>
 							<div class="col-lg-4">

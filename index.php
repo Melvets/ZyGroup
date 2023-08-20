@@ -58,6 +58,9 @@ $datamember = query("SELECT * FROM tbl_member");
     <link href="./dist/css/tabler-vendors.min.css?1685973381" rel="stylesheet"/>
     <link href="./dist/css/demo.min.css?1685973381" rel="stylesheet"/>
 
+    <!-- Sweet Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
   <!-- Jquery Fancybox -->
     <!-- <script type="text/javascript" src="fancybox/lib/jquery-1.10.1.min.js"></script>
     <script type="text/javascript" src="fancybox/source/jquery.fancybox.js"></script> -->
@@ -310,7 +313,8 @@ $datamember = query("SELECT * FROM tbl_member");
                           <td><?= $member["jabatan"]; ?></td>
                           <td>
                             <a href="v_edit.php?id=<?= $member["id"] ?>" class="btn btn-default text-green btn-lg shadow rounded-2 p-2" title="update"><i class="fas fa-pen"></i></a>
-                            <a href="v_delete.php?id=<?= $member["id"]; ?>" onclick="return confirm('Are you sure?');" class="btn btn-default text-red btn-lg shadow rounded-2 p-2" title="delete"><i class="fas fa-trash"></i></a>
+                            <!-- <button onclick="confirmAlert()"><a href="v_delete.php?id=<?= $member["id"]; ?>" class="btn btn-default text-red btn-lg shadow rounded-2 p-2" title="delete" name="delete" ><i class="fas fa-trash"></i></a></button> -->
+                            <button class="btn btn-default text-red btn-lg shadow rounded-2 p-2" onclick="confirmAlert()"> <i class="fas fa-trash"></i> </button>
                           </td>
                         </tr>
                       <?php $i++; ?>
@@ -450,6 +454,55 @@ $datamember = query("SELECT * FROM tbl_member");
         toastr.error('<?= $_SESSION["alertError"]; ?>');
       </script>
     <?php session_destroy(); endif; ?>
+
+    <?php if ( isset($_SESSION["alertInfo"]) ) : ?>
+      <script>
+        toastr.options = {
+          "closeButton": true,
+          "debug": true,
+          "newestOnTop": true,
+          "progressBar": false,
+          "positionClass": "toast-top-right",
+          "preventDuplicates": false,
+          "showDuration": "300",
+          "hideDuration": "1000",
+          "timeOut": "5000",
+          "extendedTimeOut": "1000",
+          "showEasing": "swing",
+          "hideEasing": "linear",
+          "showMethod": "fadeIn",
+          "hideMethod": "fadeOut"
+        }
+        toastr.info('<?= $_SESSION["alertInfo"]; ?>');
+      </script>
+    <?php session_destroy(); endif; ?>
+
+    <script>
+      function confirmAlert() {
+        
+        Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: 'Ini akan dihapus permanen!',
+                showCancelButton: true,
+                confirmButtonText: 'Yes',
+                denyButtonText: 'No',
+                icon: 'warning',
+                customClass: {
+                    actions: 'my-actions',
+                    cancelButton: 'order-1 right-gap',
+                    confirmButton: 'order-2',
+                }
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    // Swal.fire('Saved!', '', 'success')
+                    document.location.href = "v_delete.php?id=<?= $member["id"]; ?>";
+                } else {
+                    // Swal.fire('Changes are not saved', '', 'info')
+                }
+                })
+
+        };
+    </script>
 
   </body>
 </html>

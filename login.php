@@ -37,6 +37,7 @@ if ( isset($_POST["login"]) ) {
                 setcookie('key', hash('sha256', $row['username']), time()+60 * 60 * 24);
             }
 
+            $_SESSION["alertInfo"] ="Anda login sebagai" . " " . $row['username'];
             header("Location: index.php");
         }
     }

@@ -13,11 +13,11 @@ $datamember = query("SELECT * FROM tbl_member WHERE id = $id")[0];
 
 if ( isset($_POST["submit"]) ) {
 	if ( edit($_POST) > 0 ) {
-    $_SESSION["alertSuccess"] = "Data berhasil diubah";
+    $_SESSION["alertSuccess"] = "Data berhasil diubah!";
 		header("location: index.php");
 	
 	} else {
-    $_SESSION["alertError"] = "Data gagal diubah";
+    $_SESSION["alertError"] = "Data gagal diubah!";
 		header("location: index.php");
 	}
 }
@@ -325,9 +325,9 @@ if ( isset($_POST["submit"]) ) {
 								<label for="gambar" class="form-label">Gambar</label>
 								<input id="gambar" type="file" class="form-control" name="gambar">
 
-                <?php if ( isset($_SESSION["alertInvalid"]) ) : ?>
-                  <div class="text-warning">Pilih gambar terlebih dahulu!</div>
-                <?php endif; ?>
+                <?php if ( isset($_SESSION["messageError"]) ) : ?>
+                  <div class="gambar_error text-warning"><?= $_SESSION["messageError"]; ?></div>
+                <?php session_destroy(); endif; ?>	
 
 								</div>
 							</div>

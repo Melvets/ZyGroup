@@ -39,17 +39,15 @@ function upload(){
     $tmpName = $_FILES['gambar']['tmp_name'];
     $gambar_error = null;
 
-    if ( $error === 4 ) {
-        echo "
-            <script>
-                alert ('pilih gambar terlebih dahulu!');
-            </script>
-        ";
+    // if ( $error === 4 ) {
+    //     echo "
+    //         <script>
+    //             alert ('pilih gambar terlebih dahulu!');
+    //         </script>
+    //     ";
 
-        // $gambar_error = "Harap pilih gambar terlebih dahulu!";
-
-        return false;
-    }
+    //     return false;
+    // }
 
     $ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
     $ekstensiGambar = explode('.', $namaFile);
@@ -58,21 +56,27 @@ function upload(){
     $namaFileDepan = $namaFileDepan[0];
 
     if ( !in_array($ekstensiGambar, $ekstensiGambarValid) ) {
-        echo "
-            <script>
-                alert ('Gunakan ekstensi JPG, JPEG, atau PNG!');
-            </script>
-        ";
+        // echo "
+        //     <script>
+        //         alert ('Gunakan ekstensi JPG, JPEG, atau PNG!');
+        //     </script>
+        // ";
+
+        // $gambarError = "Gunakan ekstensi JPG, JPEG, atau PNG!";
+
+        $_SESSION["messageError"] = "Gunakan ekstensi JPG, JPEG, atau PNG!";
 
         return false;
     }
 
-    if ( $ukuranFile > 1000000 ) {
-        echo "
-            <script>
-                alert ('Ukuran gambar terlalu besar!');
-            </script>
-        ";
+    if ( $ukuranFile > 3000000 ) {
+        // echo "
+        //     <script>
+        //         alert ('Ukuran gambar terlalu besar!');
+        //     </script>
+        // ";
+
+        $_SESSION["messageError"] = "Gambar tidak boleh lebih dari 1 mb!";
 
         return false;
     }
