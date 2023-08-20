@@ -241,6 +241,8 @@ if ( isset($_POST["submit"]) ) {
 						<div class="modal-body">
 						<div class="mb-3">
 							
+            <input type="hidden" name="tanggal_sekarang" value="<?= date("Y-m-d") ?>">
+
 						<!-- Nama -->
 						<label for="nama" class="form-label">Name</label>
 						<input id="nama" type="text" class="form-control " placeholder="Your name" name="nama" required>

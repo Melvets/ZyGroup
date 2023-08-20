@@ -13,11 +13,11 @@ $datamember = query("SELECT * FROM tbl_member WHERE id = $id")[0];
 
 if ( isset($_POST["submit"]) ) {
 	if ( edit($_POST) > 0 ) {
-    $_SESSION["alertSuccess"] = "Data berhasil diubah!";
+    $_SESSION["alertSuccess"] = "Data berhasil diupdate!";
 		header("location: index.php");
 	
 	} else {
-    $_SESSION["alertError"] = "Data gagal diubah!";
+    $_SESSION["alertError"] = "Data gagal diupdate!";
 		header("location: index.php");
 	}
 }
@@ -248,6 +248,7 @@ if ( isset($_POST["submit"]) ) {
 						
             <input type="hidden" name="id" value="<?= $datamember["id"]; ?>">
             <input type="hidden" name="gambarLama" value="<?= $datamember["gambar"]; ?>">
+            <input type="hidden" name="update_sekarang" value="<?= date("Y-m-d") ?>">
 
 						<!-- Nama -->
 						<label for="nama" class="form-label">Name</label>

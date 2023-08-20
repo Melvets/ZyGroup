@@ -20,13 +20,14 @@ function create($data){
     $tanggal_lahir = htmlspecialchars($data["tanggal_lahir"]);
     $telp = htmlspecialchars($data["telp"]);
     $jabatan = htmlspecialchars($data["jabatan"]);
+    $tanggal_sekarang = $data["tanggal_sekarang"];
 
     $gambar = upload();
     if ( !$gambar ){
         return false;
     }
 
-    $query = "INSERT INTO tbl_member (gambar, nama, jenis_kelamin, kota, tanggal_lahir, telp, jabatan) VALUES ('$gambar', '$nama', '$jenis_kelamin', '$kota', '$tanggal_lahir', '$telp', '$jabatan')";
+    $query = "INSERT INTO tbl_member (gambar, nama, jenis_kelamin, kota, tanggal_lahir, telp, jabatan, date_create) VALUES ('$gambar', '$nama', '$jenis_kelamin', '$kota', '$tanggal_lahir', '$telp', '$jabatan', '$tanggal_sekarang')";
 
     mysqli_query($db, $query);
     return mysqli_affected_rows($db);
@@ -110,6 +111,7 @@ function edit($data) {
     $telp = htmlspecialchars($data["telp"]);
     $jabatan = htmlspecialchars($data["jabatan"]);
     $gambarLama = $data["gambarLama"];
+    $update_sekarang = $data["update_sekarang"];
 
     if ( $_FILES['gambar']['error'] === 4 ) {
         $gambar = $gambarLama;
@@ -124,7 +126,8 @@ function edit($data) {
                 tanggal_lahir = '$tanggal_lahir',
                 telp = '$telp',
                 jabatan = '$jabatan',
-                gambar = '$gambar' 
+                gambar = '$gambar',
+                date_update = '$update_sekarang'
             WHERE id = $id";
 
     mysqli_query($db, $query);
