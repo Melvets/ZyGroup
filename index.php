@@ -82,6 +82,12 @@ $datamember = query("SELECT * FROM tbl_member");
       body {
       	font-feature-settings: "cv03", "cv04", "cv11";
       }
+
+      .mem_gambar {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
     </style>
 
   </head>
@@ -311,7 +317,7 @@ $datamember = query("SELECT * FROM tbl_member");
                           <td><span class="text-secondary"><?= $i; ?></span></td>
 
                           <td><a href="dist/img/upload/<?php echo $member["gambar"];?>" 
-                          class="fancybox" ><img src="dist/img/upload/<?php echo $member["gambar"]; ?>" alt="" width="60" height="60" class="img-fluid img-thumbnail img-polaroid"></a></td>
+                          class="fancybox" ><img src="dist/img/upload/<?php echo $member["gambar"]; ?>" alt="" width="60" height="60" class="img-fluid img-thumbnail img-polaroid mem_gambar"></a></td>
 
                           <td><?= $member["nama"]; ?></td>
                           <td><?= $member["jenis_kelamin"]; ?></td>

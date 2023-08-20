@@ -79,6 +79,11 @@ if ( isset($_POST["submit"]) ) {
       body {
       	font-feature-settings: "cv03", "cv04", "cv11";
       }
+      .mem_gambar {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
     </style>
 
   <!-- Jquery Fancybox -->
@@ -328,7 +333,7 @@ if ( isset($_POST["submit"]) ) {
 
 						<div class="row">
               <div class="col-1">
-                <img id="v_gambar" src="dist/img/upload/<?php echo $datamember["gambar"]; ?>" width="100" class="img-fluid img-thumbnail">
+                <img id="v_gambar" src="dist/img/upload/<?php echo $datamember["gambar"]; ?>" width="100" height="100" class="img-fluid img-thumbnail mem_gambar">
               </div>
 							<div class="col-lg-7">
 								<div class="mb-3">
