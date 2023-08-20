@@ -303,7 +303,10 @@ if ( isset($_POST["submit"]) ) {
 						</div>
 
 						<div class="row">
-							<div class="col-lg-8">
+              <div class="col-1">
+                  <img id="v_gambar" src="static/avatars/default.jpg" width="100" class="img-fluid img-thumbnail">
+              </div>
+							<div class="col-lg-7">
 								<div class="mb-3">
 
 								<!-- Gambar -->
@@ -407,5 +410,15 @@ if ( isset($_POST["submit"]) ) {
     <!-- Tabler Core -->
     <script src="./dist/js/tabler.min.js?1685973381" defer></script>
     <script src="./dist/js/demo.min.js?1685973381" defer></script>
+    <!-- Scripts -->
+    <script>
+      // Input gambar nongol gambarnya
+      const image = document.querySelector("#v_gambar"),
+      input = document.querySelector("#gambar");
+
+      input.addEventListener("change", () => {
+        image.src = URL.createObjectURL(input.files[0]);
+      });
+    </script>
   </body>
 </html>

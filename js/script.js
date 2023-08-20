@@ -6,8 +6,3 @@ $(document).ready(function() {
         });
     });
 });
-
-// jQuery Fancybox
-// $(document).ready(function() {
-//     $(".picture").fancybox();
-// });
