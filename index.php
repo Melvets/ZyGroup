@@ -295,7 +295,7 @@ $datamember = query("SELECT * FROM tbl_member");
                   </div>
 
                   <div class="table-responsive" id="container">
-                    <table class="table card-table table-vcenter text-nowrap datatable">
+                    <table class="table card-table table-vcenter text-nowrap datatable table-hover">
                       <thead>
                         <tr>
                           <th class="w-1">No.</th>
