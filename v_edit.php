@@ -48,8 +48,8 @@ if ( isset($_POST["submit"]) ) {
     <meta name="mobile-web-app-capable" content="yes"/>
     <meta name="HandheldFriendly" content="True"/>
     <meta name="MobileOptimized" content="320"/>
-    <link rel="icon" href="./favicon.ico" type="image/x-icon"/>
-    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="static/logo/ZyLogo2.png" type="image/x-icon"/>
+    <link rel="shortcut icon" href="static/logo/ZyLogo2.png" type="image/x-icon"/>
     <meta name="description" content="Tabler comes with tons of well-designed components and features. Start your adventure with Tabler and make your dashboard great again. For free!"/>
     <meta name="canonical" content="https://preview.tabler.io/layout-navbar-overlap.html">
     <meta name="twitter:image:src" content="https://preview.tabler.io/static/og.png">
@@ -109,7 +109,7 @@ if ( isset($_POST["submit"]) ) {
           </button>
           <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
             <a href="." class="text-decoration-none">
-              <img src="./static/logo/ZyLogo.png" alt="" width="50">
+            <img src="./static/logo/ZyLogo2.png" alt="" width="50" class="pe-1">
               ZyGroup
             </a>
           </h1>

@@ -9,7 +9,7 @@ List ZyGroup Project | Target  *17 Agustus 2023*
 2. Alert -- (registrasi)
 3. PDF Reporting
 4. JQuery Fancybox --- (kecik)
-5. Ganti logo
+5. Ganti logo ---
 6. Halaman navigasi
 7. Nama dan photoprofil user
 8. Table hover ---
@@ -20,3 +20,4 @@ List ZyGroup Project | Target  *17 Agustus 2023*
 13. Crop image
 14. Footer
 15. Pattern telpon
+16. Background carbon
