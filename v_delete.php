@@ -12,7 +12,7 @@ $id = $_GET["id"];
 
 if ( delete($id) > 0 ) {
     $_SESSION["alertSuccess"] = "Data berhasil dihapus!";
-    header("location: index.php");
+    header("location: nav_member.php");
 } 
 
 

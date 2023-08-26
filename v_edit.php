@@ -14,11 +14,11 @@ $datamember = query("SELECT * FROM tbl_member WHERE id = $id")[0];
 if ( isset($_POST["submit"]) ) {
 	if ( edit($_POST) > 0 ) {
     $_SESSION["alertSuccess"] = "Data berhasil diupdate!";
-		header("location: index.php");
+		header("location: nav_member.php");
 	
 	} else {
     $_SESSION["alertError"] = "Data gagal diupdate!";
-		header("location: index.php");
+		header("location: nav_member.php");
 	}
 }
 
@@ -363,7 +363,7 @@ if ( isset($_POST["submit"]) ) {
 
 						<div class="modal-footer">
 
-							<a href="index.php" class="btn btn-link link-secondary text-decoration-none mx-3">
+							<a href="nav_member.php" class="btn btn-link link-secondary text-decoration-none mx-3">
 							Cancel
 							</a>
 

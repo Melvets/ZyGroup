@@ -8,12 +8,6 @@ if ( !isset($_SESSION["login"]) ) {
 
 include 'functions.php';
 
-$datauser = query("SELECT * FROM tbl_user")[1];
-$firstName = $datauser["first_name"];
-$lastName = $datauser["last_name"];
-echo $firstName . $lastName;
-die;
-
 ?>
 
 
@@ -31,7 +25,7 @@ die;
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Zy Website | Home</title>
+    <title>Zy Website | Galery</title>
     <script defer data-api="/stats/api/event" data-domain="preview.tabler.io" src="/stats/js/script.js"></script>
     <meta name="msapplication-TileColor" content=""/>
     <meta name="theme-color" content=""/>
@@ -135,12 +129,12 @@ die;
               <ul class="navbar-nav">
 
               <!-- Home -->
-                <li class="nav-item active">
+                <li class="nav-item">
                   <a class="nav-link" href="./" >
                     <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l-2 0l9 -9l9 9l-2 0" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
                     </span>
-                    <span class="nav-link-title text-light">
+                    <span class="nav-link-title">
                       Home
                     </span>
                   </a>
@@ -164,6 +158,7 @@ die;
                   </a>
                 </li>
 
+                <!-- Blog -->
                 <li class="nav-item">
                   <a class="nav-link" href="nav_blog.php" >
                   <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-blogger me-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -178,7 +173,7 @@ die;
                   </a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item active">
                   <a class="nav-link" href="nav_galery.php" >
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo me-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -187,12 +182,12 @@ die;
                       <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5"></path>
                       <path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3"></path>
                     </svg>
-                    <span class="nav-link-title">
+                    <span class="nav-link-title text-light">
                       Galery
                     </span>
                   </a>
                 </li>
-                
+
                 <li class="nav-item">
                   <a class="nav-link" href="nav_info.php">
                     <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/layout-2 -->
@@ -225,10 +220,10 @@ die;
               <div class="col">
                 <!-- Page pre-title -->
                 <div class="page-pretitle">
-                  Zy Home
+                  Zy Galery
                 </div>
                 <h2 class="page-title">
-                  ZyGroup Home
+                  ZyGroup Galery
                 </h2>
               </div>
             </div>
@@ -242,128 +237,24 @@ die;
           <div class="container-xl">
             <div class="row row-deck row-cards">
 
-              <div class="col-sm-6 col-lg-12">
-                <div class="card">
-                  <div class="card-body text-center">
-                    <h1 class="mb-0">-- COMING SOON! --</h1>
-                    <p class="text-secondary">Tunggu update selanjutnya, ya <3</p>
-                  </div>
-                </div>
-              </div>
-
               <div class="col-12">
-                <div class="row row-cards">
-                  <div class="col-sm-6 col-lg-3">
-                    <div class="card card-sm">
-                      <div class="card-body">
-                        <div class="row align-items-center">
+                <div class="card">
+                        
+                <div class="page-body">
+                <div class="container-xl d-flex flex-column justify-content-center">
+                    <div class="empty">
+                    <div class="empty-img"><img src="./static/illustrations/undraw_joyride_hnno.svg" height="128" alt="">
+                    </div>
+                    <p class="empty-title">Coming Soon</p>
+                    <p class="empty-subtitle text-secondary">
+                        Tunggu update selanjutnya, ya <3
+                    </p>
+                    </div>
+                </div>
+                </div>
 
-                        <div class="col-auto">
-                            <span class="bg-primary text-white avatar">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
-                                <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                                <path d="M21 21v-2a4 4 0 0 0 -3 -3.85"></path>
-                                </svg>
-                            </span>
-                          </div>
-                          <div class="col">
-                            <div class="font-weight-medium">
-                              Members
-                            </div>
-                            <div class="text-secondary">
-                              30 Orang
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6 col-lg-3">
-                    <div class="card card-sm">
-                      <div class="card-body">
-                        <div class="row align-items-center">
-                          <div class="col-auto">
-                            <span class="bg-yellow text-white avatar"><!-- Download SVG icon from http://tabler-icons.io/i/shopping-cart -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="25" height="25" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <path d="M8 21h8a5 5 0 0 0 5 -5v-3a3 3 0 0 0 -3 -3h-1v-2a5 5 0 0 0 -5 -5h-4a5 5 0 0 0 -5 5v8a5 5 0 0 0 5 5z"></path>
-                            <path d="M7 7m0 1.5a1.5 1.5 0 0 1 1.5 -1.5h3a1.5 1.5 0 0 1 1.5 1.5v0a1.5 1.5 0 0 1 -1.5 1.5h-3a1.5 1.5 0 0 1 -1.5 -1.5z"></path>
-                            <path d="M7 14m0 1.5a1.5 1.5 0 0 1 1.5 -1.5h7a1.5 1.5 0 0 1 1.5 1.5v0a1.5 1.5 0 0 1 -1.5 1.5h-7a1.5 1.5 0 0 1 -1.5 -1.5z"></path>
-                            </svg>
-                            </span>
-                          </div>
-                          <div class="col">
-                            <div class="font-weight-medium">
-                              Blog
-                            </div>
-                            <div class="text-secondary">
-                              30 Posts
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6 col-lg-3">
-                    <div class="card card-sm">
-                      <div class="card-body">
-                        <div class="row align-items-center">
-                          <div class="col-auto">
-                            <span class="bg-green text-white avatar"><!-- Download SVG icon from http://tabler-icons.io/i/brand-twitter -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <path d="M15 8h.01"></path>
-                            <path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z"></path>
-                            <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5"></path>
-                            <path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3"></path>
-                            </svg>
-                            </span>
-                          </div>
-                          <div class="col">
-                            <div class="font-weight-medium">
-                              Galery
-                            </div>
-                            <div class="text-secondary">
-                              30 Photos
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6 col-lg-3">
-                    <div class="card card-sm">
-                      <div class="card-body">
-                        <div class="row align-items-center">
-                          <div class="col-auto">
-                            <span class="bg-info text-white avatar"><!-- Download SVG icon from http://tabler-icons.io/i/brand-twitter -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-info-square-rounded" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <path d="M12 9h.01"></path>
-                            <path d="M11 12h1v4h1"></path>
-                            <path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z"></path>
-                            </svg>
-                            </span>
-                          </div>
-                          <div class="col">
-                            <div class="font-weight-medium">
-                              Info
-                            </div>
-                            <div class="text-secondary">
-                              30 Informations
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
-
-              
             </div>
           </div>
         </div>
