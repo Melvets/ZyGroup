@@ -7,7 +7,17 @@ if ( !isset($_SESSION["login"]) ) {
 }
 
 include 'functions.php';
-$datamember = query("SELECT * FROM tbl_member");
+
+$jumlahDataPerhalaman = 5;
+$jumlahData = count(query("SELECT * FROM tbl_member"));
+$jumlahHalaman = ceil($jumlahData / $jumlahDataPerhalaman);
+
+$halamanAktif = ( isset($_GET["page"]) ) ? $_GET["page"] : 1;
+$awalData = ($jumlahDataPerhalaman * $halamanAktif) - $jumlahDataPerhalaman;
+
+$no = $awalData + 1;
+
+$datamember = query("SELECT * FROM tbl_member LIMIT $awalData, $jumlahDataPerhalaman");
 ?>
 
 
@@ -285,7 +295,7 @@ $datamember = query("SELECT * FROM tbl_member");
 
                           <form action="" method="post">
 
-                          <input type="text" name="keyword" class="form-control form-control-sm" aria-label="Search invoice" autocomplete="off" autofocus id="keyword">
+                          <input type="text" name="keyword" class="form-control form-control-sm" aria-label="Search invoice" autocomplete="off" id="keyword">
 
                           </form>
                         
@@ -311,10 +321,9 @@ $datamember = query("SELECT * FROM tbl_member");
                       </thead>
                       <tbody>
 
-                      <?php $i = 1; ?>
                       <?php foreach($datamember as $member) : ?>
                         <tr>
-                          <td><span class="text-secondary"><?= $i; ?></span></td>
+                          <td><span class="text-secondary"><?= $no++; ?></span></td>
 
                           <td><a href="dist/img/upload/<?php echo $member["gambar"];?>" 
                           class="fancybox" ><img src="dist/img/upload/<?php echo $member["gambar"]; ?>" alt="" width="60" height="60" class="img-fluid img-thumbnail img-polaroid mem_gambar"></a></td>
@@ -331,7 +340,6 @@ $datamember = query("SELECT * FROM tbl_member");
                             <button class="btn btn-default text-red btn-lg shadow rounded-2 p-2" onclick="confirmAlert()"> <i class="fas fa-trash"></i> </button>
                           </td>
                         </tr>
-                      <?php $i++; ?>
                       <?php endforeach; ?>
 
 
@@ -339,28 +347,54 @@ $datamember = query("SELECT * FROM tbl_member");
                     </table>
                   </div>
                   <div class="card-footer d-flex align-items-center">
-                    <p class="m-0 text-secondary">Showing <span>1</span> to <span>8</span> of <span>16</span> entries</p>
+                    <p class="m-0 text-secondary">Showing <span><?= $jumlahDataPerhalaman; ?></span> of <span><?= $jumlahData; ?></span> entries</p>
                     <ul class="pagination m-0 ms-auto">
-                      <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+
+                    <?php if ( $halamanAktif > 1 ) : ?>
+                      <li class="page-item">
+                        <a class="page-link" href="?page=<?= $halamanAktif - 1 ?>" tabindex="-1" aria-disabled="true">
                           <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
                           <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l-6 6l6 6" /></svg>
                           prev
                         </a>
                       </li>
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item"><a class="page-link" href="#">4</a></li>
-                      <li class="page-item"><a class="page-link" href="#">5</a></li>
+                    <?php else : ?>
+                      <li class="page-item disabled">
+                        <a class="page-link" href="?page=<?= $halamanAktif - 1 ?>" tabindex="-1" aria-disabled="true">
+                          <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l-6 6l6 6" /></svg>
+                          prev
+                        </a>
+                      </li>  
+                    <?php endif; ?>  
+                      
+                      <?php for ( $i = 1; $i <= $jumlahHalaman; $i++ ) : ?>
+                        <?php if ( $i == $halamanAktif ) : ?>
+                          <li class="page-item active"><a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a></li>
+                        <?php else : ?>
+                          <li class="page-item"><a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a></li>
+                        <?php endif; ?>
+                      <?php endfor; ?>  
+                      
+                    <?php if ( $halamanAktif < $jumlahHalaman ) : ?>
                       <li class="page-item">
-                        <a class="page-link" href="#">
+                        <a class="page-link" href="?page=<?= $halamanAktif + 1; ?>">
                           next <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
                           <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
                         </a>
                       </li>
+                    <?php else : ?>
+                      <li class="page-item disabled">
+                        <a class="page-link" href="?page=<?= $halamanAktif + 1; ?>">
+                          next <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
+                        </a>
+                      </li>
+                    <?php endif; ?>  
+
                     </ul>
                   </div>
+
                 </div>
               </div>
             </div>

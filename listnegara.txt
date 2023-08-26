@@ -1,22 +1,22 @@
 List ZyGroup Project | Target  *17 Agustus 2023*
 *External :*
 1. Cookie ---
-2. Ganti logo register dan login
-3. Ganti icon register dan login
+2. Ganti logo register dan login ---
+3. Ganti icon register dan login ---
 
 *Internal :*
-1. Pagination
-2. Alert -- (registrasi)
-3. PDF Reporting
-4. JQuery Fancybox --- (kecik)
-5. Ganti logo ---
+    1. Pagination --
+    2. Alert -- (registrasi)
+3. PDF Reporting / Excel
+    4. JQuery Fancybox --- 
+    5. Ganti logo ---
 6. Halaman navigasi
 7. Nama dan photoprofil user
-8. Table hover ---
-9. Logo icon edit and create
-10. Preview picture if selected (create and edit) ---
-11. Edit button edit ---
-12. Create and update date ---
+    8. Table hover ---
+    9. Logo icon edit and create ---
+    10. Preview picture if selected (create and edit) ---
+    11. Edit button edit ---
+    12. Create and update date ---
 13. Crop image
 14. Footer
 15. Pattern telpon
