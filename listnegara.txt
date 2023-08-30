@@ -11,7 +11,7 @@ List ZyGroup Project | Target  *17 Agustus 2023*
     4. JQuery Fancybox --- 
     5. Ganti logo ---
     6. Halaman navigasi ---
-7. Nama dan photoprofil user
+7. Nama dan photoprofil user ---
     8. Table hover ---
     9. Logo icon edit and create ---
     10. Preview picture if selected (create and edit) ---

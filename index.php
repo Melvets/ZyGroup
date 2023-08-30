@@ -8,11 +8,11 @@ if ( !isset($_SESSION["login"]) ) {
 
 include 'functions.php';
 
-$datauser = query("SELECT * FROM tbl_user")[1];
-$firstName = $datauser["first_name"];
-$lastName = $datauser["last_name"];
-echo $firstName . $lastName;
-die;
+$data_user = $_SESSION["data_user"];
+$query = mysqli_query($db, "SELECT * FROM tbl_user WHERE username = '$data_user'");
+$row = mysqli_fetch_assoc($query);
+// echo $row["last_name"];
+
 
 ?>
 
@@ -63,15 +63,38 @@ die;
     <link href="./dist/css/tabler-payments.min.css?1685973381" rel="stylesheet"/>
     <link href="./dist/css/tabler-vendors.min.css?1685973381" rel="stylesheet"/>
     <link href="./dist/css/demo.min.css?1685973381" rel="stylesheet"/>
-    <style>
-      @import url('https://rsms.me/inter/inter.css');
-      :root {
-      	--tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
-      }
-      body {
-      	font-feature-settings: "cv03", "cv04", "cv11";
-      }
-    </style>
+
+    <!-- Sweet Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Jquery Fancybox -->
+      <script src="dist/libs/fancybox/jquery.js"></script>
+      <link rel="stylesheet" href="dist/libs/fancybox/jquery.fancybox.css?v=2.1.0" media="screen">
+      <script src="dist/libs/fancybox/jquery.fancybox.pack.js?v=2.1.0"></script>
+      <script>
+        $(document).ready(function() {
+              $('.fancybox').fancybox();
+        });
+      </script>
+
+    <!-- Toastr -->
+      <link href="toastr/toastr.css" rel="stylesheet"/>
+
+      <style>
+        @import url('https://rsms.me/inter/inter.css');
+        :root {
+          --tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+        }
+        body {
+          font-feature-settings: "cv03", "cv04", "cv11";
+        }
+
+        .mem_gambar {
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+      </style>
   </head>
   <body >
     <script src="./dist/js/demo-theme.min.js?1685973381"></script>
@@ -105,19 +128,19 @@ die;
 
             <div class="nav-item dropdown">
               <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
-                <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                <span class="avatar avatar-sm rounded-circle" style="background-image: url(static/avatars/default.jpg)"></span>
                 <div class="d-none d-xl-block ps-2">
-                  <div>Dhiya</div>
-                  <div class="mt-1 small text-secondary">Tim IT</div>
+                  <div><?= $row["first_name"] . " " . $row["last_name"]; ?></div>
+                  <div class="text-success mt-1 small text-secondary">Online</div>
                 </div>
               </a>
 
               <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow" data-bs-theme="light">
                 <div class="position-relative mb-5 pt-4">
-                  <span class="avatar avatar-lg rounded-circle position-absolute top-100 start-50 translate-middle mt-5 border border-dark border-3" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                  <span class="avatar avatar-lg rounded-circle position-absolute top-100 start-50 translate-middle mt-5" style="background-image: url(static/avatars/default.jpg)"></span>
                 </div>
                 <div class="pt-5">
-                  <p class="text-center pt-4"> Dhiya <br> <small>Tim IT</small> </p>
+                  <p class="text-center pt-4"> <?= $row["first_name"] . " " . $row["last_name"]; ?> <br> <small class="text-success">Online</small> </p>
                   <div class="dropdown-divider m-3"></div>
                   <div class="d-flex">
                     <a href="#" class="text-reset px-5 pb-3 bd-highlight">Settings</a> |
@@ -417,6 +440,39 @@ die;
     <!-- Tabler Core -->
     <script src="./dist/js/tabler.min.js?1685973381" defer></script>
     <script src="./dist/js/demo.min.js?1685973381" defer></script>
+
+    <!-- Icons -->
+    <script src="https://kit.fontawesome.com/9c45ff2d1a.js" crossorigin="anonymous"></script>
+
+    <!-- <script src="js/code.jquery.com_jquery-3.7.0.min.js"></script> -->
+    <script src="js/script.js"></script>
+
+    <!-- Toastr -->
+    <script src="toastr/toastr.min.js"></script>
+
+    <?php if ( isset($_SESSION["alertInfo"]) ) : ?>
+      <script>
+        toastr.options = {
+          "closeButton": true,
+          "debug": true,
+          "newestOnTop": true,
+          "progressBar": false,
+          "positionClass": "toast-top-right",
+          "preventDuplicates": false,
+          "showDuration": "300",
+          "hideDuration": "1000",
+          "timeOut": "5000",
+          "extendedTimeOut": "1000",
+          "showEasing": "swing",
+          "hideEasing": "linear",
+          "showMethod": "fadeIn",
+          "hideMethod": "fadeOut"
+        }
+        toastr.info('<?= $_SESSION["alertInfo"]; ?>');
+      </script>
+    <?php
+    unset($_SESSION["alertInfo"]);
+    endif; ?>
 
   </body>
 </html>

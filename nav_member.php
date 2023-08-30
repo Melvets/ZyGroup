@@ -8,6 +8,11 @@ if ( !isset($_SESSION["login"]) ) {
 
 include 'functions.php';
 
+$data_user = $_SESSION["data_user"];
+$query = mysqli_query($db, "SELECT * FROM tbl_user WHERE username = '$data_user'");
+$row = mysqli_fetch_assoc($query);
+// echo $row["last_name"];
+
 $jumlahDataPerhalaman = 5;
 $jumlahData = count(query("SELECT * FROM tbl_member"));
 $jumlahHalaman = ceil($jumlahData / $jumlahDataPerhalaman);
@@ -140,19 +145,19 @@ $datamember = query("SELECT * FROM tbl_member LIMIT $awalData, $jumlahDataPerhal
 
             <div class="nav-item dropdown">
               <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
-                <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                <span class="avatar avatar-sm rounded-circle" style="background-image: url(static/avatars/default.jpg)"></span>
                 <div class="d-none d-xl-block ps-2">
-                  <div>Dhiya</div>
-                  <div class="mt-1 small text-secondary">Tim IT</div>
+                  <div><?= $row["first_name"] . " " . $row["last_name"]; ?></div>
+                  <div class="text-success mt-1 small text-secondary">Online</div>
                 </div>
               </a>
 
               <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow" data-bs-theme="light">
                 <div class="position-relative mb-5 pt-4">
-                  <span class="avatar avatar-lg rounded-circle position-absolute top-100 start-50 translate-middle mt-5 border border-dark border-3" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                  <span class="avatar avatar-lg rounded-circle position-absolute top-100 start-50 translate-middle mt-5" style="background-image: url(static/avatars/default.jpg)"></span>
                 </div>
                 <div class="pt-5">
-                  <p class="text-center pt-4"> Dhiya <br> <small>Tim IT</small> </p>
+                  <p class="text-center pt-4"> <?= $row["first_name"] . " " . $row["last_name"]; ?> <br> <small class="text-success">Online</small> </p>
                   <div class="dropdown-divider m-3"></div>
                   <div class="d-flex">
                     <a href="#" class="text-reset px-5 pb-3 bd-highlight">Settings</a> |
@@ -495,7 +500,7 @@ $datamember = query("SELECT * FROM tbl_member LIMIT $awalData, $jumlahDataPerhal
         }
         toastr.success('<?= $_SESSION["alertSuccess"]; ?>');
       </script>
-    <?php session_destroy(); endif; ?>
+    <?php unset($_SESSION["alertSuccess"]); endif; ?>
 
     <?php if ( isset($_SESSION["alertError"]) ) : ?>
       <script>
@@ -517,7 +522,7 @@ $datamember = query("SELECT * FROM tbl_member LIMIT $awalData, $jumlahDataPerhal
         }
         toastr.error('<?= $_SESSION["alertError"]; ?>');
       </script>
-    <?php session_destroy(); endif; ?>
+    <?php unset($_SESSION["alertError"]); endif; ?>
 
     <?php if ( isset($_SESSION["alertInfo"]) ) : ?>
       <script>
@@ -539,7 +544,9 @@ $datamember = query("SELECT * FROM tbl_member LIMIT $awalData, $jumlahDataPerhal
         }
         toastr.info('<?= $_SESSION["alertInfo"]; ?>');
       </script>
-    <?php session_destroy(); endif; ?>
+    <?php
+    unset($_SESSION["alertInfo"]); 
+    endif; ?>
 
     <script>
       function confirmAlert() {
