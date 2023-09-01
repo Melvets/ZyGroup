@@ -302,11 +302,14 @@ $datamember = query("SELECT * FROM tbl_member LIMIT $awalData, $jumlahDataPerhal
                 <div class="card">
 
                   <div class="card-body border-bottom py-3">
+                    <!-- <div class="d-flex mb-3">
+                      <a href="" class="btn btn-default btn-lg shadow rounded-2 p-1"><p class="text-secondary mb-0 fs-0">Excel</p></a>
+                    </div> -->
                     <div class="d-flex">
                       <div class="text-secondary">
                         Show
                         <div class="mx-2 d-inline-block">
-                          <input type="text" class="form-control form-control-sm" value="8" size="3" aria-label="Invoices count">
+                          <input type="text" class="form-control form-control-sm" value="<?= $jumlahDataPerhalaman; ?>" size="3" aria-label="Invoices count" disabled>
                         </div>
                         entries
                       </div>
@@ -426,32 +429,15 @@ $datamember = query("SELECT * FROM tbl_member LIMIT $awalData, $jumlahDataPerhal
 
         <footer class="footer footer-transparent d-print-none">
           <div class="container-xl">
-            <div class="row text-center align-items-center flex-row-reverse">
-              <div class="col-lg-auto ms-lg-auto">
-                <ul class="list-inline list-inline-dots mb-0">
-                  <li class="list-inline-item"><a href="https://tabler.io/docs" target="_blank" class="link-secondary" rel="noopener">Documentation</a></li>
-                  <li class="list-inline-item"><a href="./license.html" class="link-secondary">License</a></li>
-                  <li class="list-inline-item"><a href="https://github.com/tabler/tabler" target="_blank" class="link-secondary" rel="noopener">Source code</a></li>
-                  <li class="list-inline-item">
-                    <a href="https://github.com/sponsors/codecalm" target="_blank" class="link-secondary" rel="noopener">
-                      <!-- Download SVG icon from http://tabler-icons.io/i/heart -->
-                      <svg xmlns="http://www.w3.org/2000/svg" class="icon text-pink icon-filled icon-inline" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" /></svg>
-                      Sponsor
-                    </a>
-                  </li>
-                </ul>
-              </div>
+            <div class="row text-center align-items-center">
               <div class="col-12 col-lg-auto mt-3 mt-lg-0">
                 <ul class="list-inline list-inline-dots mb-0">
                   <li class="list-inline-item">
-                    Copyright &copy; 2023
-                    <a href="." class="link-secondary">Tabler</a>.
-                    All rights reserved.
+                    &copy; 2023 ZyGroup. All rights reserved. Design by
+                    <a href="https://www.instagram.com/mel_elaaa/" class="link-secondary text-primary" target="_blank">@Camela Devs</a>.
                   </li>
                   <li class="list-inline-item">
-                    <a href="./changelog.html" class="link-secondary" rel="noopener">
-                      v1.0.0-beta19
-                    </a>
+                      v1.0.0-beta
                   </li>
                 </ul>
               </div>
