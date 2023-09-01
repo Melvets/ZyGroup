@@ -279,8 +279,9 @@ if ( isset($_POST["submit"]) ) {
 							
 							<!-- No Telepon -->
 							<label for="telp" class="form-label">No Telepon</label>
-							<input id="telp" type="text" class="form-control" placeholder="Isi nomor telepon" name="telp" required
-              value="<?= $datamember["telp"]; ?>">
+							<input id="telp" type="tel" class="form-control" placeholder="Isi nomor telepon" name="telp" required
+              value="<?= $datamember["telp"]; ?>"
+              pattern="(\+62|62|0)8[1-9][0-9]{6,9}$">
 
 							</div>
 						</div>
