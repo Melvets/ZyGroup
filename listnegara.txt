@@ -18,6 +18,6 @@ List ZyGroup Project | Target  *17 Agustus 2023*
     11. Edit button edit ---
     12. Create and update date ---
     13. Crop image (gagal)
-14. Footer
+    14. Footer ---
 15. Pattern telpon
 16. Background carbon
