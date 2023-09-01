@@ -73,6 +73,9 @@ $datamember = query("SELECT * FROM tbl_member LIMIT $awalData, $jumlahDataPerhal
     <link href="./dist/css/tabler-vendors.min.css?1685973381" rel="stylesheet"/>
     <link href="./dist/css/demo.min.css?1685973381" rel="stylesheet"/>
 
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
   <!-- Sweet Alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -267,16 +270,16 @@ $datamember = query("SELECT * FROM tbl_member LIMIT $awalData, $jumlahDataPerhal
                 <div class="page-pretitle">
                   Zy Members
                 </div>
-                <h2 class="page-title">
+                <h2 class="page-title daftar">
                   Daftar Member ZyGroup
                 </h2>
               </div>
               <!-- Page title actions -->
               <div class="col-auto ms-auto d-print-none">
                 <div class="btn-list">
-                  <a href="v_create.php" class="btn btn-primary d-none d-sm-inline-block" >
+                  <a href="v_create.php" class="btn btn-primary" >
                     <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-plus icon-member" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
                     <path d="M16 19h6"></path>

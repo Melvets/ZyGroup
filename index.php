@@ -13,7 +13,7 @@ $query = mysqli_query($db, "SELECT * FROM tbl_user WHERE username = '$data_user'
 $row = mysqli_fetch_assoc($query);
 // echo $row["last_name"];
 
-
+$jumlahData = count(query("SELECT * FROM tbl_member"));
 ?>
 
 
@@ -63,6 +63,9 @@ $row = mysqli_fetch_assoc($query);
     <link href="./dist/css/tabler-payments.min.css?1685973381" rel="stylesheet"/>
     <link href="./dist/css/tabler-vendors.min.css?1685973381" rel="stylesheet"/>
     <link href="./dist/css/demo.min.css?1685973381" rel="stylesheet"/>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 
     <!-- Sweet Alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -297,7 +300,7 @@ $row = mysqli_fetch_assoc($query);
                               Members
                             </div>
                             <div class="text-secondary">
-                              30 Orang
+                              <?= $jumlahData; ?> Orang
                             </div>
                           </div>
                         </div>
@@ -323,7 +326,7 @@ $row = mysqli_fetch_assoc($query);
                               Blog
                             </div>
                             <div class="text-secondary">
-                              30 Posts
+                              0 Posts
                             </div>
                           </div>
                         </div>
@@ -350,7 +353,7 @@ $row = mysqli_fetch_assoc($query);
                               Galery
                             </div>
                             <div class="text-secondary">
-                              30 Photos
+                              0 Photos
                             </div>
                           </div>
                         </div>
@@ -376,7 +379,7 @@ $row = mysqli_fetch_assoc($query);
                               Info
                             </div>
                             <div class="text-secondary">
-                              30 Informations
+                              0 Informations
                             </div>
                           </div>
                         </div>

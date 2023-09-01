@@ -61,6 +61,7 @@ if ( isset($_POST["login"]) ) {
 
     <!-- style -->
     <link rel="stylesheet" href="loginstyle.css">
+    <link rel="stylesheet" href="mediaquery.css">
 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -75,8 +76,8 @@ if ( isset($_POST["login"]) ) {
     <div class="container-fluid custom">
         <div class="row d-flex justify-content-center align-items-center h-100 ">
         <div class="col-md-9 col-lg-6 col-xl-4">
-            <img src="static/logo/ZyLogo2.png"
-            class="img-fluid logo" width="380" alt="ZyGroup">
+            <img src="static/logo/ZyLogoOrii.png"
+            class="img-fluid logo" width="500" alt="ZyGroup">
         </div>
 
         <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 px-5 rounded-3 my-5">
@@ -84,14 +85,14 @@ if ( isset($_POST["login"]) ) {
         <form action="" method="post">
 
             <div class="align-items-center mb-4">
-                <h2 class="mb-0 page-title text-white">Login</h2>
+                <h2 class="mb-0 page-title text-white login">Login</h2>
             </div>
             
-            <?php if ( isset($error) ) : ?>
+            <!-- <?php if ( isset($error) ) : ?>
             <div class="mb-3">
                 <p class="text-danger">Upss... Username atau password salah!</p>
             </div>
-            <?php endif; ?>
+            <?php endif; ?> -->
 
             <!-- Username input -->
             <div class="form-outline mb-3">
@@ -125,6 +126,12 @@ if ( isset($_POST["login"]) ) {
                 <p class="small fw-bold mt-2 pt-1 mb-0 text-white">Don't have an account? <a href="register.php"
                     class="link-danger">Register</a></p>
             </div>
+
+            <?php if ( isset($error) ) : ?>
+            <div class="mb-3">
+                <p class="text-danger">Upss... Username atau password salah!</p>
+            </div>
+            <?php endif; ?>
 
         </form>
 

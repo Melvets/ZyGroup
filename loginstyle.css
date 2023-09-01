@@ -15,8 +15,8 @@ section {
 }
 
 .custom {
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0, 0.8); /* Black w/opacity/see-through */
+    background-color: #010000; /* Fallback color */
+    background-color: rgba(0, 4, 29, 0.2); /* Black w/opacity/see-through */
 
     position: absolute;
     top: 50%;
@@ -36,9 +36,9 @@ section {
 
 .background-custom {
     height: 100%;
-    background-image: url("static/photos/bg.png");
-    filter: blur(8px);
-    -webkit-filter: blur(8px);
+    background-image: url("static/photos/carbon2.jpg");
+    /* filter: blur(8px); */
+    /* -webkit-filter: blur(8px); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -53,7 +53,28 @@ h2 {
     font-size: 4em;
 }
 
-@media (max-width: 450px) {
+@media (max-width: 1000px) {
+    html{
+        font-size: 75%;
+    }
+    .logo {
+        width: 200px;
+        margin-left: 0;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: -100px;
+    }
+
+    .login{
+        text-align: center;
+        margin: 0;
+    }
+
+    .custom{
+        background-color: rgba(0,0,0, 0.0); /* Black w/opacity/see-through */
+    }
+
     .h-custom {
     height: 100%;
     }

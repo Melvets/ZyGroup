@@ -1,6 +1,8 @@
 <?php 
 include 'functions.php';
 
+header("location: login.php");
+
 if ( isset($_POST['register']) ) {
     if ( register($_POST) > 0 ) {
         echo "

@@ -62,6 +62,10 @@ $row = mysqli_fetch_assoc($query);
     <link href="./dist/css/tabler-payments.min.css?1685973381" rel="stylesheet"/>
     <link href="./dist/css/tabler-vendors.min.css?1685973381" rel="stylesheet"/>
     <link href="./dist/css/demo.min.css?1685973381" rel="stylesheet"/>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
     <style>
       @import url('https://rsms.me/inter/inter.css');
       :root {
