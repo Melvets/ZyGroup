@@ -70,7 +70,7 @@ function upload(){
         return false;
     }
 
-    if ( $ukuranFile > 3000000 ) {
+    if ( $ukuranFile > 1000000 ) {
         // echo "
         //     <script>
         //         alert ('Ukuran gambar terlalu besar!');
