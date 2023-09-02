@@ -20,4 +20,4 @@ List ZyGroup Project | Target  *17 Agustus 2023*
     13. Crop image (gagal)
     14. Footer ---
     15. Pattern telpon ---
-16. Background carbon
+    16. Background carbon ---

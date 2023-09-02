@@ -364,7 +364,7 @@ $datamember = query("SELECT * FROM tbl_member LIMIT $awalData, $jumlahDataPerhal
                           <td>
                             <a href="v_edit.php?id=<?= $member["id"] ?>" class="btn btn-default text-green btn-lg shadow rounded-2 p-2" title="update"><i class="fas fa-pen"></i></a>
                             <!-- <button onclick="confirmAlert()"><a href="v_delete.php?id=<?= $member["id"]; ?>" class="btn btn-default text-red btn-lg shadow rounded-2 p-2" title="delete" name="delete" ><i class="fas fa-trash"></i></a></button> -->
-                            <button class="btn btn-default text-red btn-lg shadow rounded-2 p-2" onclick="confirmAlert()"> <i class="fas fa-trash"></i> </button>
+                            <button class="btn btn-default text-red btn-lg shadow rounded-2 p-2" onclick=" confirmAlert(<?= $member["id"]; ?>) "> <i class="fas fa-trash"></i> </button>
                           </td>
                         </tr>
                       <?php endforeach; ?>
@@ -373,6 +373,13 @@ $datamember = query("SELECT * FROM tbl_member LIMIT $awalData, $jumlahDataPerhal
                       </tbody>
                     </table>
                   </div>
+                  
+                  <?php if ( $jumlahData == 0 ) : ?>
+                  <div class="mt-3">
+                    <p class="text-secondary text-center">Tidak ada data yang dapat ditampilkan.</p>
+                  </div>
+                  <?php endif; ?>
+
                   <div class="card-footer d-flex align-items-center">
                     <p class="m-0 text-secondary">Showing <span><?= $jumlahDataPerhalaman; ?></span> of <span><?= $jumlahData; ?></span> entries</p>
                     <ul class="pagination m-0 ms-auto">
@@ -538,7 +545,7 @@ $datamember = query("SELECT * FROM tbl_member LIMIT $awalData, $jumlahDataPerhal
     endif; ?>
 
     <script>
-      function confirmAlert() {
+      function confirmAlert(data) {
         
         Swal.fire({
                 title: 'Apakah Anda yakin?',
@@ -555,7 +562,8 @@ $datamember = query("SELECT * FROM tbl_member LIMIT $awalData, $jumlahDataPerhal
                 }).then((result) => {
                 if (result.isConfirmed) {
                     // Swal.fire('Saved!', '', 'success')
-                    document.location.href = "v_delete.php?id=<?= $member["id"]; ?>";
+                    location.href = "v_delete.php?id=" + data;
+
                 } else {
                     // Swal.fire('Changes are not saved', '', 'info')
                 }
