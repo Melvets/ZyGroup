@@ -101,7 +101,7 @@ $datamember = query("SELECT * FROM tbl_member LIMIT $awalData, $jumlahDataPerhal
       	font-feature-settings: "cv03", "cv04", "cv11";
       }
 
-      .mem_gambar {
+      .mem_gambarr {
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -353,7 +353,7 @@ $datamember = query("SELECT * FROM tbl_member LIMIT $awalData, $jumlahDataPerhal
                           <td><span class="text-secondary"><?= $no++; ?></span></td>
 
                           <td><a href="dist/img/upload/<?php echo $member["gambar"];?>" 
-                          class="fancybox" ><img src="dist/img/upload/<?php echo $member["gambar"]; ?>" alt="" width="60" height="60" class="img-fluid img-thumbnail img-polaroid mem_gambar"></a></td>
+                          class="fancybox" ><img src="dist/img/upload/<?php echo $member["gambar"]; ?>" alt="" width="60" height="60" class="img-fluid img-thumbnail img-polaroid mem_gambarr"></a></td>
 
                           <td><?= $member["nama"]; ?></td>
                           <td><?= $member["jenis_kelamin"]; ?></td>
