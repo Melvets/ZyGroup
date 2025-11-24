@@ -1,6 +1,6 @@
 <?php 
 // Koneksi database
-$db = mysqli_connect("localhost", "admin", "admin123", "zygroup");
+$db = mysqli_connect("localhost", "root", "", "zygroup");
 
 function query($query){
     global $db;
